@@ -30,8 +30,6 @@ module Integral
     require 'acts-as-taggable-on'
     require 'slack-notifier'
     require 'paranoia'
-    require 'factory_girl_rails'
-    require 'faker'
     require 'will_paginate'
     require 'will_paginate-foundation'
     require 'rails-settings-cached'
