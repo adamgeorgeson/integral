@@ -1,6 +1,7 @@
 ## NEXT
 - Add Image versions - Thumbnail, Small, Medium, Large. The sizes are configurable.
 - Add Swiper next and previous buttons to SwiperListRenderer
+- Bump Foundation dependancy to ~> 6.3.0
 - Enable compression and static cache control by default (added `compress_enabled` config variable to disable)
 - Process Post image uploads in the background
 - Upgrade carrierwave to 1.1.0 - Includes performance enhancemente. Note: carrierwave_backgrounder should be >=0.4.3
