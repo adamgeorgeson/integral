@@ -3,5 +3,7 @@
   = f.input :description, as: :text, input_html: { class: 'materialize-textarea' }
 
   = f.input :file, :wrapper_html => { :class => "file-field" }, label: false, validate: { presence: !@image.persisted? }
-
+  - if @image.persisted?
+    = f.input :dimensions, readonly: true, input_html: { value: @image.dimensions }
+    = f.input :file_size, as: :string, readonly: true, input_html: { value: number_to_human_size(@image.file_size) }
   = f.button :button, class: 'btn waves-effect waves-light', id: 'new_image_submit_btn'

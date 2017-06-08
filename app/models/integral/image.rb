@@ -19,9 +19,9 @@ module Integral
     # Scopes
     scope :search, -> (query) { where("lower(title) LIKE ?", "%#{query.downcase}%") }
 
-    # @return [String] represents the original size of the image
-    def size
-      "#{width}x#{height}"
+    # @return [String] represents the dimensions of the original image
+    def dimensions
+      "#{width}x#{height}px" if width && height
     end
 
     # @return [Hash] the instance as a list item

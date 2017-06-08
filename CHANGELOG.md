@@ -5,6 +5,7 @@
 - Process Post image uploads in the background
 - Upgrade carrierwave to 1.1.0 - Includes performance enhancemente. Note: carrierwave_backgrounder should be >=0.4.3
 - Lists and List Items are now cachable
+- Store and display (within edit screen) Image file size and dimensions
 - Fix ListItemRenderer to render links which work with TurboLinks
 - Fix 404 issue caused by lists which have references to destroyed objects
 - Fix 'A copy of ApplicationController has been removed' error which was occurring in development mode.

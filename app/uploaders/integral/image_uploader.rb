@@ -7,6 +7,8 @@ module Integral
 
     # Process image
     process optimize: [{ quality: Integral.configuration.image_compression_quality }]
+    process :store_dimensions
+    process :store_file_size
 
     # Override the directory where uploaded files will be stored.
     def store_dir
@@ -68,6 +70,18 @@ module Integral
         base_name = base_name[version_name.size.succ..-1]
       end
       [base_name, version_name].compact.join("-") + extension
+    end
+
+    def store_dimensions
+      return unless file && model
+
+      model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
+    end
+
+    def store_file_size
+      return unless file && model
+
+      model.file_size = file.size
     end
 
     # Large Version
