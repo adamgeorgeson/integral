@@ -51,11 +51,20 @@ And then execute:
   # db/seeds.rb
   Integral::Engine.load_seed
  ```
-4. Setup database - Copy and run necessary migrations
+4. The currently released version of carrierwave_backgrounder is nearly 2 years old. Hopefully a new version will be released soon, until then we have to point to master (or a fork). Add the following to your Gemfile:
+```
+  # Remove this when new gem version is released (< 0.4.2)
+  gem 'carrierwave_backgrounder', git: 'git://github.com/lardawge/carrierwave_backgrounder.git'
+```
+5. Setup database - Copy and run necessary migrations
 ```
   rake integral:install:migrations
   rake db:migrate
   rake db:setup
+```
+6. Add configuration initializer
+```
+rails generate integral:install
 ```
 
 ## Heroku Setup
