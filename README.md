@@ -66,7 +66,7 @@ And then execute:
 ```
 rails generate integral:install
 ```
-7. Install your preferred background task manager. If this is not Delayed Job you'll have to update the `carrierwave_backgrounder` config file
+7. Install your preferred background task manager. If this is not [Delayed Job][delayed-job] you'll have to update the `carrierwave_backgrounder` config file
 ```
 config/initializers/carrierwave_backgrounder.rb
 ```
@@ -147,3 +147,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 [letter-opener]: https://github.com/ryanb/letter_opener
 [rails-12-factor]: https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
 [ckeditor]: https://github.com/galetahub/ckeditor
+[delayed-job]: https://github.com/collectiveidea/delayed_job
