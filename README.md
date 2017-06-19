@@ -51,11 +51,24 @@ And then execute:
   # db/seeds.rb
   Integral::Engine.load_seed
  ```
-4. Setup database - Copy and run necessary migrations
+4. The currently released version of carrierwave_backgrounder is nearly 2 years old. Hopefully a new version will be released soon, until then we have to point to master (or a fork). Add the following to your Gemfile:
+```
+  # Remove this when new gem version is released (< 0.4.2)
+  gem 'carrierwave_backgrounder', git: 'git://github.com/lardawge/carrierwave_backgrounder.git'
+```
+5. Setup database - Copy and run necessary migrations
 ```
   rake integral:install:migrations
   rake db:migrate
   rake db:setup
+```
+6. Run Integral install rake task (adds configuration initializers)
+```
+rails generate integral:install
+```
+7. Install your preferred background task manager. If this is not [Delayed Job][delayed-job] you'll have to update the `carrierwave_backgrounder` config file
+```
+config/initializers/carrierwave_backgrounder.rb
 ```
 
 ## Heroku Setup
@@ -134,3 +147,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 [letter-opener]: https://github.com/ryanb/letter_opener
 [rails-12-factor]: https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
 [ckeditor]: https://github.com/galetahub/ckeditor
+[delayed-job]: https://github.com/collectiveidea/delayed_job
