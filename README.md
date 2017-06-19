@@ -62,9 +62,13 @@ And then execute:
   rake db:migrate
   rake db:setup
 ```
-6. Add configuration initializer
+6. Run Integral install rake task (adds configuration initializers)
 ```
 rails generate integral:install
+```
+7. Install your preferred background task manager. If this is not Delayed Job you'll have to update the `carrierwave_backgrounder` config file
+```
+config/initializers/carrierwave_backgrounder.rb
 ```
 
 ## Heroku Setup

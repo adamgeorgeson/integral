@@ -6,6 +6,8 @@ module Integral
 
       def copy_initializer_file
         copy_file "integral.rb", "config/initializers/integral.rb"
+        copy_file "carrierwave.rb", "config/initializers/carrierwave.rb"
+        copy_file "carrierwave_backgrounder.rb", "config/initializers/carrierwave_backgrounder.rb"
       end
     end
   end
