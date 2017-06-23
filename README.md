@@ -109,7 +109,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/patric
 
 ### Future works
 * Sitemap creation
-* Config generator
 * Super admin (able to view & undelete soft-deleted items)
 * Improved image management
 * Fully dynamic page routing (no restart required for Heroku)

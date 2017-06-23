@@ -6,7 +6,7 @@ Integral.configure do |config|
   # config.backend_namespace = 'dashboard'
 
   # Configure the blog namespace. Default is 'blog'
-  # config.backend_namespace = 'news'
+  # config.blog_namespace = 'news'
 
   # Configure whether or not the blog is enabled. Default is true
   # config.blog_enabled = false

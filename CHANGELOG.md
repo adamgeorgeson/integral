@@ -4,7 +4,7 @@
 - Add config initializer generator `rails generate integral:install`
 - Enable compression and static cache control by default (added `compress_enabled` config variable to disable)
 - Process Post image uploads in the background
-- Upgrade carrierwave to 1.1.0 - Includes performance enhancemente. Note: carrierwave_backgrounder should be >=0.4.3
+- Upgrade carrierwave to 1.1.0 - Includes performance enhancement. Note: carrierwave_backgrounder should be >=0.4.3
 - Lists and List Items are now cachable
 - Store and display (within edit screen) Image file size and dimensions
 - Fix ListItemRenderer to render links which work with TurboLinks
