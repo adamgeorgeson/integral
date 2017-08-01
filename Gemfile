@@ -13,3 +13,6 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
+# Remove this when new gem version is released 0.4.3
+gem 'carrierwave_backgrounder', git: 'git://github.com/lardawge/carrierwave_backgrounder.git'
+
