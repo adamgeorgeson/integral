@@ -12,6 +12,7 @@ module Integral
     end
 
     ActiveSupport.on_load(:active_record) do
+      # ActiveRecord::Base extension
       class ActiveRecord::Base
         # Adds listable behaviour to objects
         def self.acts_as_listable(options={})
