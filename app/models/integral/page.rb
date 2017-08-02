@@ -90,7 +90,6 @@ module Integral
     end
 
     def ancestors
-      puts "Hit ancestors method for ID: #{id}"
       children = Page.where(parent_id: self.id)
 
       return [] if children.empty?
