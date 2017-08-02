@@ -41,7 +41,7 @@ module Integral
         unavailable_ids << self.id
       end
 
-      Page.where.not(id: unavailable_ids)
+      Page.where.not(id: unavailable_ids).order(:title)
     end
 
     # @return [Hash] the instance as a list item
