@@ -2,6 +2,7 @@
 - Add Image versions - Thumbnail, Small, Medium, Large. The sizes are configurable.
 - Add Swiper next and previous buttons to SwiperListRenderer
 - Add config initializer generator `rails generate integral:install`
+- Add multi-level breadcrumbs to pages via setting the page parent
 - Enable compression and static cache control by default (added `compress_enabled` config variable to disable)
 - Process Post image uploads in the background
 - Upgrade carrierwave to 1.1.0 - Includes performance enhancement. Note: carrierwave_backgrounder should be >=0.4.3
