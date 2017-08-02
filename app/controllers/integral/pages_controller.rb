@@ -32,7 +32,10 @@ module Integral
 
     def set_breadcrumbs
       add_breadcrumb I18n.t('header.navigation.home'), :root_url
-      add_breadcrumb @page.title
+
+      @page.breadcrumbs.each do |breadcrumb|
+        add_breadcrumb breadcrumb[:title], "#{Rails.application.routes.default_url_options[:host]}#{breadcrumb[:path]}"
+      end
     end
   end
 end

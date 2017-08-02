@@ -14,6 +14,9 @@ module Integral
 
     enum status: [ :draft, :published ]
 
+    # Relations
+    belongs_to :parent, class_name: 'Integral::Page'
+
     # Validations
     validates :title, presence: true, length: { minimum: 5, maximum: 50 }
     validates :path, presence: true, length: { maximum: 100 }
@@ -21,6 +24,7 @@ module Integral
     validates_format_of :path, :with => PATH_REGEX
     validates :description, presence: true, length: { maximum: 160 }
     validate :validate_path_is_not_black_listed
+    validate :validate_parent_is_available
 
     # Callbacks
     after_save :reload_routes
@@ -28,6 +32,16 @@ module Integral
     # Searches for pages where title is like specified query
     def self.search(search)
       where("lower(title) LIKE ?", "%#{search.downcase}%")
+    end
+
+    # Return all available parents
+    def available_parents
+      if persisted?
+        unavailable_ids = self.ancestors.map{|p| p.id}
+        unavailable_ids << self.id
+      end
+
+      Page.where.not(id: unavailable_ids)
     end
 
     # @return [Hash] the instance as a list item
@@ -65,6 +79,30 @@ module Integral
       available_templates
     end
 
+    # @return [Array] containing all page breadcrumbs within a hash made up of path and title
+    def breadcrumbs
+      crumb = [ {
+        path: path,
+        title: title
+      } ]
+
+      parent ? parent.breadcrumbs.concat(crumb) : crumb
+    end
+
+    def ancestors
+      puts "Hit ancestors method for ID: #{id}"
+      children = Page.where(parent_id: self.id)
+
+      return [] if children.empty?
+
+      descendants = children
+      children.each do |page|
+        descendants.concat page.ancestors
+      end
+
+      descendants
+    end
+
     private
 
     # @return [Array] containing available human readable statuses against there numeric value
@@ -73,6 +111,12 @@ module Integral
         ['Draft', 0],
         ['Published', 1]
       ]
+    end
+
+    def validate_parent_is_available
+      return true if self.parent.nil?
+
+      errors.add(:parent, 'Invalid Parent') unless self.available_parents.include?(self.parent)
     end
 
     def validate_path_is_not_black_listed

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215012231) do
+ActiveRecord::Schema.define(version: 20170801182434) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(version: 20170215012231) do
     t.string   "file"
     t.integer  "width"
     t.integer  "height"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.datetime "deleted_at"
+    t.boolean  "file_processing", default: true, null: false
+    t.integer  "file_size"
   end
 
   add_index "integral_images", ["deleted_at"], name: "index_integral_images_on_deleted_at"
@@ -61,26 +63,30 @@ ActiveRecord::Schema.define(version: 20170215012231) do
   end
 
   create_table "integral_list_items", force: :cascade do |t|
-    t.integer "list_id"
-    t.string  "title"
-    t.text    "description"
-    t.string  "subtitle"
-    t.string  "url"
-    t.integer "image_id"
-    t.string  "target"
-    t.string  "html_classes"
-    t.integer "priority"
-    t.integer "object_id"
-    t.string  "type"
-    t.string  "object_type"
+    t.integer  "list_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "subtitle"
+    t.string   "url"
+    t.integer  "image_id"
+    t.string   "target"
+    t.string   "html_classes"
+    t.integer  "priority"
+    t.integer  "object_id"
+    t.string   "type"
+    t.string   "object_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "integral_lists", force: :cascade do |t|
-    t.string  "title",        null: false
-    t.text    "description"
-    t.boolean "locked"
-    t.string  "html_classes"
-    t.string  "html_id"
+    t.string   "title",        null: false
+    t.text     "description"
+    t.boolean  "locked"
+    t.string   "html_classes"
+    t.string   "html_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "integral_pages", force: :cascade do |t|
@@ -93,9 +99,11 @@ ActiveRecord::Schema.define(version: 20170215012231) do
     t.integer  "status",      default: 0
     t.datetime "deleted_at"
     t.string   "template",    default: "default"
+    t.integer  "parent_id"
   end
 
   add_index "integral_pages", ["deleted_at"], name: "index_integral_pages_on_deleted_at"
+  add_index "integral_pages", ["parent_id"], name: "index_integral_pages_on_parent_id", unique: true
 
   create_table "integral_post_viewings", force: :cascade do |t|
     t.integer  "post_id"
@@ -111,14 +119,15 @@ ActiveRecord::Schema.define(version: 20170215012231) do
     t.string   "description"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "slug"
     t.string   "image"
-    t.integer  "view_count",   default: 0
+    t.integer  "view_count",       default: 0
     t.datetime "published_at"
-    t.integer  "status",       default: 0
+    t.integer  "status",           default: 0
     t.datetime "deleted_at"
+    t.boolean  "image_processing", default: true, null: false
   end
 
   add_index "integral_posts", ["deleted_at"], name: "index_integral_posts_on_deleted_at"
@@ -164,6 +173,7 @@ ActiveRecord::Schema.define(version: 20170215012231) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.datetime "deleted_at"
+    t.boolean  "avatar_processing",      default: true, null: false
   end
 
   add_index "integral_users", ["deleted_at"], name: "index_integral_users_on_deleted_at"
