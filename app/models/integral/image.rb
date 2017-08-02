@@ -49,5 +49,11 @@ module Integral
     def touch_list_items
       list_items.find_each(&:touch)
     end
+
+    # Override CarrierwaveBackgrounder Method
+    # CarrierwaveBackgrounder should not be attempting to processing images when processing is disabled through Carrierwave
+    def enqueue_file_background_job?
+      !remove_file? && !process_file_upload && file_updated? && ImageUploader.enable_processing
+    end
   end
 end

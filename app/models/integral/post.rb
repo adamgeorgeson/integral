@@ -83,5 +83,11 @@ module Integral
     def set_published_at
       self.published_at = Time.now if self.published? && self.published_at.nil?
     end
+
+    # Override CarrierwaveBackgrounder Method
+    # CarrierwaveBackgrounder should not be attempting to processing images when processing is disabled through Carrierwave
+    def enqueue_image_background_job?
+      !remove_image? && !process_image_upload && image_updated? && PostImageUploader.enable_processing
+    end
   end
 end

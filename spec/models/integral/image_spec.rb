@@ -19,14 +19,14 @@ module Integral
       it { is_expected.to validate_length_of(:description).is_at_most(160) }
     end
 
-    describe '#size' do
+    describe '#dimensions' do
       let(:height) { '1000' }
       let(:width) { '5000' }
 
-      it 'returns expected size' do
+      it 'returns expected dimensions' do
         image.height = height
         image.width = width
-        expect(image.size).to eq "#{width}x#{height}"
+        expect(image.dimensions).to eq "#{width}x#{height}px"
       end
     end
   end

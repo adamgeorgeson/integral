@@ -72,17 +72,6 @@ module Integral
       [base_name, version_name].compact.join("-") + extension
     end
 
-    def store_dimensions
-      return unless file && model
-
-      model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
-    end
-
-    def store_file_size
-      return unless file && model
-
-      model.file_size = file.size
-    end
 
     # Large Version
     version :large do
@@ -102,6 +91,20 @@ module Integral
     # Thumbnail Version
     version :thumbnail, from_version: :small do
       process :resize_to_fill => Integral.configuration.image_thumbnail_size
+    end
+
+    private
+
+    def store_dimensions
+      return unless file && model
+
+      model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
+    end
+
+    def store_file_size
+      return unless file && model
+
+      model.file_size = file.size
     end
   end
 end

@@ -80,7 +80,7 @@ module Integral
       end
 
       def page_params
-        params.require(:page).permit(:title, :description, :path, :body, :status, :template)
+        params.require(:page).permit(:title, :description, :path, :body, :status, :template, :parent_id)
       end
 
       def set_breadcrumbs

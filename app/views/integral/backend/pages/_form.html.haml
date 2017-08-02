@@ -6,6 +6,7 @@
         = f.input :description
         = f.input :path
         = f.input :template, collection: Integral::Page.available_templates, prompt: t('integral.backend.pages.prompts.choose_template'), include_blank: false
+        = f.association :parent, collection: @page.available_parents.map {|p| [p.title, p.id]}, include_blank: true
 
         = f.input :body, as: :ckeditor, label: false, input_html: { id: 'content_editor', ckeditor: {toolbar: 'mini', language: current_user.locale} }
         .radios

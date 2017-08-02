@@ -34,5 +34,39 @@ module Integral
         end
       end
     end
+
+    describe '#breadcrumbs' do
+      let(:parent) { build(:integral_page, title: 'Parent') }
+      let(:gparent) { build(:integral_page, title: 'GParent') }
+
+      context 'when it has no breadrcrumbs' do
+        let(:breadcrumbs) { [path: page.path, title: page.title] }
+        it 'returns its own breadcrumb' do
+          expect(page.breadcrumbs).to eq(breadcrumbs)
+        end
+      end
+
+      context 'when it has one breadcrumb' do
+        let(:breadcrumbs) { [{path: parent.path, title: parent.title}, {path: page.path, title: page.title}] }
+        it 'returns itself and the breadcrumb' do
+          page.parent = parent
+          page.save
+
+          expect(page.breadcrumbs).to eq(breadcrumbs)
+        end
+      end
+
+      context 'when it has several breadcrumbs' do
+        let(:breadcrumbs) { [{path: gparent.path, title: gparent.title}, {path: parent.path, title: parent.title}, {path: page.path, title: page.title}] }
+        it 'returns itself and all other breadcrumbs' do
+          parent.parent = gparent
+          page.parent = parent
+          page.save
+          parent.save
+
+          expect(page.breadcrumbs).to eq(breadcrumbs)
+        end
+      end
+    end
   end
 end
