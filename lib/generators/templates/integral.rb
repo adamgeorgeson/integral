@@ -26,6 +26,9 @@ Integral.configure do |config|
   # Configure the maximum dimensions of images uploaded through CKeditor
   # config.editor_image_size_limit = [800, 800]
 
+  # Configure whether images can be re-uploaded once the record has been saved. If you're using a CDN this should be false to prevent caching issues. Default is false
+  # config.editable_persisted_images = false
+
   # Configure image compression quality. 100 for lossless. Default is 90
   # config.image_compression_quality = 100
 

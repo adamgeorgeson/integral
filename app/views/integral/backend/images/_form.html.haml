@@ -2,7 +2,11 @@
   = f.input :title
   = f.input :description, as: :text, input_html: { class: 'materialize-textarea' }
 
-  = f.input :file, :wrapper_html => { :class => "file-field" }, label: false, validate: { presence: !@image.persisted? }
+  - if !@image.persisted? || Integral.configuration.editable_persisted_images
+    = f.input :file, :wrapper_html => { :class => "file-field" }, label: false, validate: { presence: !@image.persisted? }
+  - else
+    = f.input :file, as: :string, disabled: true
+
   - if @image.persisted?
     = f.input :dimensions, readonly: true, input_html: { value: @image.dimensions }
     = f.input :file_size, as: :string, readonly: true, input_html: { value: number_to_human_size(@image.file_size) }

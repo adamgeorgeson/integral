@@ -89,6 +89,7 @@ module Integral
       parent ? parent.breadcrumbs.concat(crumb) : crumb
     end
 
+    # @return [Array] list of Pages which parent the instance, used for breadcrumbing
     def ancestors
       children = Page.where(parent_id: self.id)
 

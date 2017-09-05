@@ -7,9 +7,6 @@ module Integral
                   :blog_enabled,
                   :blog_namespace,
                   :frontend_parent_controller,
-                  # TODO: Change these settings to be configurable through backend
-                  :facebook_app_id,
-                  :twitter_handler,
                   :editor_image_size_limit,
                   :image_thumbnail_size,
                   :image_small_size,
@@ -17,7 +14,11 @@ module Integral
                   :image_large_size,
                   :image_compression_quality,
                   :additional_page_templates,
-                  :compression_enabled
+                  :compression_enabled,
+                  :editable_persisted_images,
+                  # TODO: Change these settings to be configurable through backend
+                  :facebook_app_id,
+                  :twitter_handler
 
     def initialize
       set_defaults
@@ -48,6 +49,7 @@ module Integral
       @image_large_size = [1280, 1280]
       @additional_page_templates = []
       @compression_enabled = true
+      @editable_persisted_images = false
     end
   end
 end
