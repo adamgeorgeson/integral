@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "haml-rails", "~> 0.9" # HAML
   s.add_dependency "sass-rails", "~> 5.0" # Sass
   s.add_dependency "materialize-sass", '~> 0.97.5.0' # Material Design UI framework
-  s.add_dependency "foundation-rails", "~> 6.4.1" # Foundation UI Framework
+  s.add_dependency "foundation-rails", "~> 6.2.1" # Foundation UI Framework
   s.add_dependency "simple_form", "~> 3.3" # Form builder
   s.add_dependency "cocoon", "~> 1.2" # Nested forms
   s.add_dependency "draper", "~> 2.1" # Object decoration

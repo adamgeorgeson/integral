@@ -36,7 +36,7 @@ module Integral
       "#{filename}.#{file.extension}"
     end
 
-    # Return original URL if procesing hasn't been complete (no versions available)
+    # Return original URL if processing hasn't been complete (no versions available)
     def url *args
       version_name, _ = args
 
@@ -72,7 +72,6 @@ module Integral
       [base_name, version_name].compact.join("-") + extension
     end
 
-
     # Large Version
     version :large do
       process :resize_to_fit => Integral.configuration.image_large_size
@@ -97,12 +96,14 @@ module Integral
 
     def store_dimensions
       return unless file && model
+      return unless model.respond_to?(:width=) && model.respond_to?(:height=)
 
       model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
     end
 
     def store_file_size
       return unless file && model
+      return unless model.respond_to?(:file_size=)
 
       model.file_size = file.size
     end
