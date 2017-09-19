@@ -6,7 +6,6 @@
 - Add configuration in to disallow users from reuploading an image once it has been created. This prevents caching issues with CDNs
 - Enable compression and static cache control by default (added `compress_enabled` config variable to disable)
 - Process Post image uploads in the background
-- Upgrade carrierwave to 1.1.0 - Includes performance enhancement. Note: carrierwave_backgrounder should be >=0.4.3
 - Lists and List Items are now cachable
 - Store and display (within edit screen) Image file size and dimensions
 - Fix ListItemRenderer to render links which work with TurboLinks
@@ -15,7 +14,10 @@
 - Fix accidentally resizing non editor images to editor size limit
 - Fix Asset Precompile no longer crashes out when no database is available
 - Fix integral image filenaming now defaults to original filename when presented with non parameterizable(?) string
+### Dependancies
+- Foundation bumped to ~> 6.4.1
 - Lock Parsley to ~> 2.4.4 due to breaking change in 2.7.0
+- Upgraded carrierwave to 1.1.0 - Includes performance enhancement. Note: carrierwave_backgrounder should be >=0.4.3
 
 ### Breaking Changes
 - ```frontend_parent_controller``` config variable now expects a string rather than a Class
