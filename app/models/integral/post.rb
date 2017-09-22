@@ -10,9 +10,6 @@ module Integral
     extend FriendlyId
     friendly_id :title, use: :history
 
-    mount_uploader :image, PostImageUploader
-    process_in_background :image
-
     enum status: [ :draft, :published ]
 
     # Conditional is hack to check if method exists otherwise causes undefined method error in test env
@@ -20,6 +17,7 @@ module Integral
 
     # Associations
     belongs_to :user
+    belongs_to :image, class_name: Integral::Image
 
     # Validations
     validates :title, presence: true, length: { minimum: 4, maximum: 50 }
@@ -55,12 +53,13 @@ module Integral
     # @return [Hash] the instance as a list item
     def to_list_item
       subtitle = self.published_at.present? ? I18n.t('integral.blog.posted_ago', time: time_ago_in_words(self.published_at)) : I18n.t('integral.users.status.draft')
+      image_url = image.file.url if image
       {
         id: id,
         title: title,
         subtitle: subtitle,
         description: description,
-        image: image.url,
+        image: image_url,
         url: Integral::Engine.routes.url_helpers.post_url(self)
       }
     end

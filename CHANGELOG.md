@@ -29,6 +29,7 @@ Integral::Image.find_each do |image|
 end
 ```
 - Integral.configuration.listable_objects no longer exists. To register an object as listable the model should call acts_as_listable and implement #to_list_item and .listable_options.
+- Posts Images are now an associate with Integral::Image rather than direct Image. Make sure to create Integral::Image objects for each post with an image before running migrations
 
 ## 0.1.5 (March 29, 2017)
 - Unsaved changes check now occurs for turbolinks visits and has been added on post and list edit pages

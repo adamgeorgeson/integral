@@ -95,10 +95,43 @@ document.addEventListener("turbolinks:load", function() {
 
     CKEDITOR.replace(editor.attr('id'), { "language": I18n.locale });
   });
+
+  /*** Image Selector ***/
+  imageSelector = new RecordSelector('.image-selector .record-selector')
+
+    // Unlink image from object
+    $( ".image-select .image-container .unlink a" ).on( "click", function(ev) {
+      ev.preventDefault();
+      container = $(ev.currentTarget).closest('.image-container');
+
+      container.find('input').val('');
+      container.find('.placeholder').removeClass('hide');
+      container.find('.actual').addClass('hide');
+      container.find('.unlink').addClass('hide');
+    });
+
+  // Open ImageFinder modal
+  $( ".image-select .image-container .link a" ).on( "click", function(ev) {
+    ev.preventDefault();
+    container = $(ev.currentTarget).closest('.image-container');
+
+    imageSelector.open()
+  });
+
+  // Link image to object
+  $( ".image-selector .record-selector" ).on( "object-selection", function(ev, selectedData) {
+    container = $(".image-select .image-container")
+
+      container.find('input').val(selectedData.id);
+    container.find('.placeholder').addClass('hide');
+    container.find('.actual').attr('src',selectedData.image)
+      container.find('.actual').removeClass('hide');
+    container.find('.unlink').removeClass('hide');
+  });
 });
 
 document.addEventListener("turbolinks:render", function() {
-  initWiceGrid()
+  initWiceGrid();
   $('input, textarea').characterCounter();
   $('.tooltipped').tooltip({delay: 50});
   $('ul.tabs').tabs();

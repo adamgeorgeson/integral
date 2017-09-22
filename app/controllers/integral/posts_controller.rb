@@ -20,7 +20,7 @@ module Integral
         page_title: @post.title,
         page_description: @post.description,
         open_graph:  {
-          image: @post.image.url
+          image: @post.image&.file&.url
         }
       }
     end
