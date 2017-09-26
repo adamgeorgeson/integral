@@ -1,0 +1,19 @@
+- image = f.object.send(image_attr)
+- image_path = image&.file&.url
+- unlinkHiddenClass = image.present? ? '' : 'hide'
+- placeholderHiddenClass = image.present? ? 'hide' : ''
+
+.image-select
+  = f.label image_attr
+  .image-container
+    = f.hidden_field "#{image_attr}_id"
+    = image_tag image_url('integral/image-not-set.png'), class: "placeholder #{placeholderHiddenClass}"
+    = image_tag image_path, class: 'actual', id: ''
+    %ul
+      %li.link
+        = link_to nil, class: 'btn-floating' do
+          %i.material-icons.clickable edit
+      %li.unlink{ class: unlinkHiddenClass }
+        = link_to nil, class: 'btn-floating' do
+          %i.material-icons.clickable.red delete
+

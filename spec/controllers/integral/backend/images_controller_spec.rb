@@ -24,17 +24,6 @@ module Integral
             sign_in user
           end
 
-          context 'when user does not have required privileges' do
-            let(:user) { create :user }
-
-            before do
-              get :index
-            end
-
-            it { expect(response.status).to eq 302 }
-            it { expect(flash[:alert]).to eq I18n.t('errors.unauthorized') }
-          end
-
           context 'when user has required privileges' do
             let(:images_sorted) { Image.all.order('created_at DESC') }
 

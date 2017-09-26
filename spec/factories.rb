@@ -69,7 +69,7 @@ FactoryGirl.define do
     tag_list
     user
     slug { Faker::Internet.slug(nil, '-') }
-    image { Rack::Test::UploadedFile.new(File.join(Integral::Engine.root, 'spec', 'support', 'image.jpg')) }
+    image
     body
     view_count
     created_at { Faker::Time.backward(30) }

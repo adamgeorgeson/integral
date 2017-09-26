@@ -2,12 +2,8 @@
   = simple_form_for [:backend, @post], validate: true, html: { id: 'post_form' } do |f|
     .col.s12
       .card-panel
-        .row
-          .image-preview.col.s2.offset-s5.center
-            = f.input :image, wrapper_html: { class: 'hide' }, input_html: { id: 'post_featured-image-uploader', class: 'image-uploader', data: { preview_selector: '#featured-image' } }
-            = f.label :'featured-image-uploader' do
-              = image_tag @post.image, class: 'clickable hoverable', id: 'featured-image'
-              %span.material-icons.grey-text.text-darken-3.clickable edit
+        .center
+          = render partial: 'integral/backend/shared/image_selector', locals: { f:f, image_attr: :image }
 
         = f.input :title
         = f.input :slug, input_html: { data: { 'slugify' => '#post_title' }}
@@ -19,3 +15,5 @@
 
     = f.button :button
 
+.image-selector
+  = render partial: 'integral/backend/shared/record_selector/modal', locals: { search_path: backend_img_index_path, title: t('integral.prompts.select_an_image'), name: 'Image' }

@@ -87,6 +87,7 @@ module Integral
         # Backend
         "integral/backend.js",
         "integral/backend.css",
+        "integral/image-not-set.png",
 
         # Errors
         "errors.css"

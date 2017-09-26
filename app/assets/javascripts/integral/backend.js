@@ -45,6 +45,7 @@ document.addEventListener("turbolinks:load", function() {
 
   SlugGenerator.check_for_slugs();
   RecordSelector.init();
+  new ImageSelector();
   $('.icon-modal-trigger').leanModal();
 
   // Used for Autocomplete
@@ -98,7 +99,7 @@ document.addEventListener("turbolinks:load", function() {
 });
 
 document.addEventListener("turbolinks:render", function() {
-  initWiceGrid()
+  initWiceGrid();
   $('input, textarea').characterCounter();
   $('.tooltipped').tooltip({delay: 50});
   $('ul.tabs').tabs();

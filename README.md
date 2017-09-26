@@ -125,6 +125,18 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/patric
 * Add specs for all configuration options
 * All TODOs :)
 
+### Testing
+
+```
+# Running the test suite
+bundle exec fudge build
+```
+
+```
+# Tailing the logs
+tail -f spec/dummy/log/test.log
+```
+
 ##
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801182434) do
+ActiveRecord::Schema.define(version: 20170922201940) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20170801182434) do
   end
 
   add_index "integral_pages", ["deleted_at"], name: "index_integral_pages_on_deleted_at"
-  add_index "integral_pages", ["parent_id"], name: "index_integral_pages_on_parent_id", unique: true
 
   create_table "integral_post_viewings", force: :cascade do |t|
     t.integer  "post_id"
@@ -119,18 +118,18 @@ ActiveRecord::Schema.define(version: 20170801182434) do
     t.string   "description"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "slug"
-    t.string   "image"
-    t.integer  "view_count",       default: 0
+    t.integer  "view_count",   default: 0
     t.datetime "published_at"
-    t.integer  "status",           default: 0
+    t.integer  "status",       default: 0
     t.datetime "deleted_at"
-    t.boolean  "image_processing", default: true, null: false
+    t.integer  "image_id"
   end
 
   add_index "integral_posts", ["deleted_at"], name: "index_integral_posts_on_deleted_at"
+  add_index "integral_posts", ["image_id"], name: "index_integral_posts_on_image_id"
   add_index "integral_posts", ["slug"], name: "index_integral_posts_on_slug", unique: true
   add_index "integral_posts", ["user_id"], name: "index_integral_posts_on_user_id"
 
