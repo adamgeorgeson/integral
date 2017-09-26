@@ -2,6 +2,7 @@ require 'rails_helper'
 
 module Integral
   describe "Post CRUD", :type => :feature do
+    let!(:image) { create(:image) }
     let!(:post) { create(:integral_post) }
     let(:builder) { build(:integral_post) }
 
@@ -13,12 +14,16 @@ module Integral
     it "can create a post" do
       click_on 'Create post'
 
-      within("#post_form") do
-        fill_in 'Title', with: builder.title
-        fill_in 'Description', with: builder.description
+      fill_in 'Title', with: builder.title
+      fill_in 'Description', with: builder.description
+      # Select first image in ImageSelector
+      # TODO: Make this into helper
+      find('label[for=post_image]').click
+      sleep(1)
+      first('.image-selector .record-selector .records .record').click
+      find('.image-selector .record-selector .modal-footer .close-button').click
 
-        fill_in_ckeditor 'post_body_editor', with: builder.body
-      end
+      fill_in_ckeditor 'post_body_editor', with: builder.body
 
       click_on 'Create Post'
 

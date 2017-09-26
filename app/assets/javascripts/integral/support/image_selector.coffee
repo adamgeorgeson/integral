@@ -11,7 +11,7 @@ class this.ImageSelector
       @_unlink(@_getContainer(ev))
 
     # Handle opening selector
-    $( ".image-select .image-container .link a" ).on "click", (ev) =>
+    $( ".image-select .image-container .link a, .image-select label" ).on "click", (ev) =>
       ev.preventDefault()
       @_openSelector(@_getContainer(ev))
 
