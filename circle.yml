@@ -1,0 +1,5 @@
+test:
+  pre:
+    - cd spec/dummy && bundle exec rake assets:precompile --trace
+  override:
+    - bundle exec fudge build

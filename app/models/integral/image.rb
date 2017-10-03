@@ -13,6 +13,9 @@ module Integral
     mount_uploader :file, ImageUploader
     process_in_background :file
 
+    # Delegations
+    delegate :url, to: :file
+
     # Associations
     has_many :list_items
 

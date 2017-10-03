@@ -49,9 +49,6 @@ Gem::Specification.new do |s|
   s.add_dependency "acts-as-taggable-on", '~> 3.4' # Tagging
   s.add_dependency "i18n-js", "~> 3.0.0.rc15" # Clientside translations
   s.add_dependency "htmlcompressor", "~> 0.2.0" # Compression
-
-  s.add_dependency 'factory_girl_rails', "~> 4.7" # Create reusable object templates
-  s.add_dependency 'faker', "~> 1.6" # Random data generator
   s.add_dependency "rails-settings-cached", "~> 0.6" # Persisted settings
 
   s.add_development_dependency "pry-rails", "~> 0.3" # Debugger
@@ -60,6 +57,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'database_cleaner', "~> 1.5" # Manages database for consistent data setup
   s.add_development_dependency 'shoulda-matchers', "~> 3.1" # Extra matchers for testing
   s.add_development_dependency 'faker', "~> 1.6" # Random data generator
+  s.add_development_dependency 'factory_girl_rails', "~> 4.7" # Create reusable object templates
+
   s.add_development_dependency 'capybara', "~> 2.10" # Acceptance testing framework
   s.add_development_dependency 'poltergeist', "~> 1.11" # Headless driver for Capybara which supports JS
   s.add_development_dependency 'launchy', "~> 2.4" # Automatically launch test pages
