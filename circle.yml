@@ -1,0 +1,5 @@
+test:
+  pre:
+    - bundle exec rake assets:precompile
+  override:
+    - bundle exec fudge build
