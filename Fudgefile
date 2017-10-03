@@ -10,5 +10,5 @@ build :default do
   task_group :analysis
 
   # Coverage should never be lowered. Looking to get this at 100 and keep it there.
-  rspec '--profile --order rand', :coverage => 60.47
+  rspec '--profile --order rand', :coverage => 62.12
 end
