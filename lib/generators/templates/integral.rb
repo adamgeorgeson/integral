@@ -1,3 +1,4 @@
+# :nocov:
 Integral.configure do |config|
   # Configure the parent controller which the blog and dynamic pages controller inherits from. Default is 'Integral::ApplicationController'
   # config.frontend_parent_controller = "::ApplicationController"

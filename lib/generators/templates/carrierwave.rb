@@ -1,3 +1,4 @@
+# :nocov:
 CarrierWave.configure do |config|
   # Use AWS storage when in production, otherwise use file
   config.storage = Rails.env.production? ? :aws : :file
