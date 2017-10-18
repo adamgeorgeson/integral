@@ -58,7 +58,18 @@
 }
 
 .ckeditor {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  .cke_inner {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+  .populate-button {
+    display: block;
+    margin: 0.5em 0;
+    .material-icons {
+      vertical-align: middle;
+      font-size: 1em;
+      line-height: 2em;
+    }
+  }
 }
 
 .clickable {

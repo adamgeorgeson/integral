@@ -96,6 +96,16 @@ document.addEventListener("turbolinks:load", function() {
 
     CKEDITOR.replace(editor.attr('id'), { "language": I18n.locale });
   });
+
+  // Populate CKeditor with example content
+  $(".ckeditor .populate-button").on( "click", function(ev) {
+      ev.preventDefault();
+      button = $(ev.target);
+      exampleContent = button.data('example-content');
+      editorId = button.closest('.ckeditor').find('textarea').attr('id');
+
+      CKEDITOR.instances[editorId].setData(exampleContent);
+  });
 });
 
 document.addEventListener("turbolinks:render", function() {
