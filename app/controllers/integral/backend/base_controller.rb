@@ -15,6 +15,9 @@ module Integral
       # User custom locale
       before_action :set_locale
 
+      # Track user activity via paper_trail
+      before_action :set_paper_trail_whodunnit
+
       # User authorization
       include Pundit
       rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

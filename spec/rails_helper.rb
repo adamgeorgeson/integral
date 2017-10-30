@@ -19,6 +19,7 @@ require 'pundit/rspec'
 require 'database_cleaner'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'paper_trail/frameworks/rspec'
 
 Capybara.default_driver = :poltergeist
 

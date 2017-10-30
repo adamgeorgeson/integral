@@ -14,6 +14,8 @@ module Integral
     # Nested forms
     accepts_nested_attributes_for :list_items, reject_if: :all_blank, allow_destroy: true
 
+    has_paper_trail class_name: 'Integral::ListVersion'
+
     # Duplicates the list including all attributes, list items and list item children
     #
     # @return [List] Unsaved cloned list

@@ -10,6 +10,10 @@ module Integral
       expect(list.valid?).to be true
     end
 
+    it "enables paper trail" do
+      is_expected.to be_versioned
+    end
+
     describe 'relations' do
       it { is_expected.to have_many :list_items }
     end

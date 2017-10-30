@@ -1,3 +1,5 @@
+PaperTrail.enabled = false
+
 # Create User Roles
 Integral::Role.create!(name: 'UserManager')
 Integral::Role.create!(name: 'ImageManager')
@@ -14,3 +16,5 @@ Integral::Page.create!(title: 'Integral Demo Page',
                        path: '/demo',
                        body: 'Welcome to Integral. Replace this page by logging in and creating your own!',
                        status: 1)
+
+PaperTrail.enabled = true

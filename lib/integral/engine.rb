@@ -23,6 +23,7 @@ module Integral
     require 'carrierwave_backgrounder'
     require 'carrierwave-imageoptimizer'
     require 'ckeditor'
+    require 'paper_trail'
     require 'i18n-js'
     require 'meta-tags'
     require 'before_render'

@@ -6,6 +6,8 @@ module Integral
     acts_as_listable if Configuration.blog_enabled? # Listable Item
     acts_as_taggable # Tagging
 
+    has_paper_trail class_name: 'Integral::PostVersion'
+
     # Slugging
     extend FriendlyId
     friendly_id :title, use: :history

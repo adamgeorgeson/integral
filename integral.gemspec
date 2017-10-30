@@ -50,6 +50,7 @@ Gem::Specification.new do |s|
   s.add_dependency "i18n-js", "~> 3.0.0.rc15" # Clientside translations
   s.add_dependency "htmlcompressor", "~> 0.2.0" # Compression
   s.add_dependency "rails-settings-cached", "~> 0.6" # Persisted settings
+  s.add_dependency 'paper_trail' # Audit trail
 
   s.add_development_dependency "pry-rails", "~> 0.3" # Debugger
   s.add_development_dependency "sqlite3", "~> 1.3" # Database

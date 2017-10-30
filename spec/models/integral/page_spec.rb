@@ -11,6 +11,10 @@ module Integral
       expect(page.valid?).to be true
     end
 
+    it "enables paper trail" do
+      is_expected.to be_versioned
+    end
+
     describe 'relations' do
     end
 

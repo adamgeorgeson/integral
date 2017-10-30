@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922201940) do
+ActiveRecord::Schema.define(version: 20171030215202) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -79,6 +79,18 @@ ActiveRecord::Schema.define(version: 20170922201940) do
     t.datetime "updated_at"
   end
 
+  create_table "integral_list_versions", force: :cascade do |t|
+    t.string   "item_type",                         null: false
+    t.integer  "item_id",                           null: false
+    t.string   "event",                             null: false
+    t.string   "whodunnit"
+    t.text     "object",         limit: 1073741823
+    t.text     "object_changes", limit: 1073741823
+    t.datetime "created_at"
+  end
+
+  add_index "integral_list_versions", ["item_type", "item_id"], name: "index_integral_list_versions_on_item_type_and_item_id"
+
   create_table "integral_lists", force: :cascade do |t|
     t.string   "title",        null: false
     t.text     "description"
@@ -88,6 +100,18 @@ ActiveRecord::Schema.define(version: 20170922201940) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "integral_page_versions", force: :cascade do |t|
+    t.string   "item_type",                         null: false
+    t.integer  "item_id",                           null: false
+    t.string   "event",                             null: false
+    t.string   "whodunnit"
+    t.text     "object",         limit: 1073741823
+    t.text     "object_changes", limit: 1073741823
+    t.datetime "created_at"
+  end
+
+  add_index "integral_page_versions", ["item_type", "item_id"], name: "index_integral_page_versions_on_item_type_and_item_id"
 
   create_table "integral_pages", force: :cascade do |t|
     t.string   "title"
@@ -103,6 +127,18 @@ ActiveRecord::Schema.define(version: 20170922201940) do
   end
 
   add_index "integral_pages", ["deleted_at"], name: "index_integral_pages_on_deleted_at"
+
+  create_table "integral_post_versions", force: :cascade do |t|
+    t.string   "item_type",                         null: false
+    t.integer  "item_id",                           null: false
+    t.string   "event",                             null: false
+    t.string   "whodunnit"
+    t.text     "object",         limit: 1073741823
+    t.text     "object_changes", limit: 1073741823
+    t.datetime "created_at"
+  end
+
+  add_index "integral_post_versions", ["item_type", "item_id"], name: "index_integral_post_versions_on_item_type_and_item_id"
 
   create_table "integral_post_viewings", force: :cascade do |t|
     t.integer  "post_id"
@@ -146,6 +182,18 @@ ActiveRecord::Schema.define(version: 20170922201940) do
   create_table "integral_roles", force: :cascade do |t|
     t.string "name"
   end
+
+  create_table "integral_user_versions", force: :cascade do |t|
+    t.string   "item_type",                         null: false
+    t.integer  "item_id",                           null: false
+    t.string   "event",                             null: false
+    t.string   "whodunnit"
+    t.text     "object",         limit: 1073741823
+    t.text     "object_changes", limit: 1073741823
+    t.datetime "created_at"
+  end
+
+  add_index "integral_user_versions", ["item_type", "item_id"], name: "index_integral_user_versions_on_item_type_and_item_id"
 
   create_table "integral_users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false

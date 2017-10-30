@@ -13,6 +13,10 @@ module Integral
       it { is_expected.to belong_to :user }
     end
 
+    it "enables paper trail" do
+      is_expected.to be_versioned
+    end
+
     describe 'validates' do
       it { is_expected.to validate_presence_of :title }
       it { is_expected.to validate_length_of(:title).is_at_least(4) }

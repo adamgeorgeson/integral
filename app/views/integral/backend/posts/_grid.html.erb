@@ -24,7 +24,7 @@
     l(post.updated_at, format: :long)
   end
 
-  g.column   do |post|
+  g.column do |post|
     link_to("<span class='material-icons green-text text-lighten-1'>remove_red_eye</span>".html_safe, backend_post_path(post)) +
       link_to("<span class='material-icons blue-text text-lighten-1'>edit</span>".html_safe, edit_backend_post_path(post)) +
       link_to("<span class='material-icons red-text text-lighten-1'>delete</span>".html_safe, backend_post_path(post), method: :delete, data: { confirm: t('integral.actions.confirm') })

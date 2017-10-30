@@ -19,6 +19,8 @@ module Integral
     validates :name, :email, presence: true
     validates :name, length: { minimum: 3, maximum: 25 }
 
+    has_paper_trail class_name: 'Integral::UserVersion'
+
     # Checks if the User has a given role
     #
     # @param role_sym [Symbol] role to check
@@ -48,4 +50,3 @@ module Integral
     end
   end
 end
-
